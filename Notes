@@ -211,20 +211,81 @@ Active-Passive Multi-Cloud Architecture (5 simple lines):
 5.This improves reliability, disaster recovery, and ensures high availability with minimal downtime.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
 Infrastructure Migration
 
 Instead of manually creating everything, companies use Infrastructure as Code (IaC).
 
 Infrastructure as Code (IaC) means you write a small configuration file that describes what infrastructure you want, and the tool creates it automatically instead of manually clicking in the cloud portal.
-
 Example:
 Instead of manually creating:
-
 1 VM
 1 Network
 1 Load balancer
-
 You write a Terraform file saying:
 "Create 1 Azure VM with 4GB RAM inside a VNet with a load balancer" → Terraform creates everything automatically.
+
+-----------------------------------------------------------------------------------
+Connect to cloud providers – Terraform connects to AWS or Azure using provider plugins and API credentials.
+This means Terraform uses provider plugins (AWS provider, Azure provider) and your cloud access keys (API credentials) to log in and communicate with the cloud.
+
+Example:
+You give Terraform your AWS access key or Azure subscription details → Terraform uses cloud APIs to create VMs, networks, and storage automatically.
+-----------------------------------------------------------------------------------
+Plan the infrastructure – Terraform checks what resources are needed and shows an execution plan (what will be created/changed).
+
+This means Terraform first compares your code with the current cloud setup and tells you what it is going to do before actually doing it.
+Example:
+If your code says create 1 VM and 1 VNet, Terraform shows a plan like:
++ create Azure VM
++ create Azure VNet
+so you can review it before applying.
+
+-------------------------------------------------------------------------------------
+
+Apply the configuration – When you run terraform apply, it automatically creates VMs, networks, and other resources in the target cloud.
+
+This means when you run terraform apply, Terraform sends requests through cloud APIs and automatically creates the infrastructure you defined in the configuration file.
+Example:
+If your code says:
+Create 1 Azure VM
+Create 1 VNet
+Create 1 Load balancer
+After terraform apply → Terraform automatically creates all these resources without manual setup.
+
+-------------------------------------------------------------------------------------
+
+Maintain consistency – If infrastructure changes later, Terraform updates only the required parts to keep the setup consistent.
+This means Terraform compares the current infrastructure with your updated code and changes only what is different, instead of recreating everything.
+Example:
+If you change VM RAM from 4 GB → 8 GB in the Terraform file, Terraform will only update the VM size and leave the network and load balancer unchanged.
+
+Simple idea:
+Terraform keeps infrastructure matching your code (source of truth) by updating only the necessary parts.
+
+-------------------------------------------------------------------------------------
+
+
+Roll Back Strategy
+A rollback strategy is a backup plan to return to the previous working system if migration or deployment fails.
+It is used to avoid downtime and data loss if the new system has errors.
+It usually involves keeping the old system running until the new one is fully tested.
+It is used during cloud migration, deployments, and updates (Blue-Green or Canary deployments).
+
+
+ow i am moving my application to my new cloud because i have some disasters or failures in old cloud. Due to some issues i am moving from old to new cloud . And now my new cloud also have some errors
+
+In this situation, companies follow a multi-level disaster recovery strategy so they are never dependent on just one cloud.
+What is done (simple concept):
+Rollback to old cloud (if still usable) – If possible, traffic is moved back temporarily.
+Use third backup location – Either another cloud or backup region.
+Restore from backups – Database backups and storage snapshots are used.
+Fix issues in new cloud while service runs elsewhere – This is called failover + failback strategy.
+
+Real industry practice:
+Companies usually follow 3-2-1 rule:
+
+3 copies of data
+2 different environments
+1 offsite backup
+Simple idea:
+Never depend on just one backup cloud — always keep multiple recovery options to avoid total failure.

@@ -1,0 +1,230 @@
+# Third‑Party Tools Used in Lift‑and‑Shift Cloud Migration
+
+## Introduction
+
+When migrating an application from on‑premises to the cloud using the Lift‑and‑Shift approach, organizations may use either native cloud tools (like AWS MGN, DMS) or third‑party tools. Third‑party tools are commonly used because they support multiple cloud providers, provide advanced disaster recovery features, and simplify migration with automation.
+
+This document summarizes some important third‑party migration tools, what they do, how they connect, and how they are used in real migration scenarios.
+
+---
+
+# 1. CloudEndure (Now part of AWS Application Migration Service)
+
+## What it does
+
+CloudEndure is a migration and disaster recovery tool that replicates entire servers including operating system, applications, configurations, and data from on‑premises infrastructure to the cloud with minimal downtime.
+
+## How it connects
+
+CloudEndure works by installing a lightweight replication agent on the source (on‑premises) server. This agent continuously replicates disk data to a staging environment in the cloud through secure HTTPS communication.
+
+## How it is used
+
+Typical workflow:
+
+1. Install CloudEndure agent on on‑prem server
+2. Start continuous data replication
+3. CloudEndure creates a replica in cloud
+4. Test the migrated server
+5. Perform cutover to cloud
+
+## When companies use it
+
+• Lift and shift migrations
+• Disaster recovery setups
+• Large scale server migrations
+
+---
+
+# 2. Zerto
+
+## What it does
+
+Zerto is a disaster recovery and migration platform that provides continuous data protection and real‑time replication of virtual machines.
+
+## How it connects
+
+Zerto integrates with virtualization platforms like:
+
+• VMware
+• Microsoft Hyper‑V
+
+It performs block‑level replication of virtual machines between data centers and cloud environments.
+
+## How it is used
+
+Typical workflow:
+
+1. Install Zerto Virtual Manager
+2. Connect virtualization environment
+3. Select virtual machines for replication
+4. Start continuous replication
+5. Trigger failover when required
+
+## When companies use it
+
+• Disaster recovery planning
+• VM migration
+• Business continuity solutions
+
+---
+
+# 3. Carbonite Migrate
+
+## What it does
+
+Carbonite Migrate is a server migration tool that moves physical and virtual servers to cloud environments with minimal downtime.
+
+## How it connects
+
+Carbonite installs an agent on the source server which continuously transfers system data to the target cloud server.
+
+## How it is used
+
+Typical workflow:
+
+1. Install Carbonite migration agent
+2. Start replication process
+3. Monitor synchronization
+4. Test migrated system
+5. Perform final cutover
+
+## When companies use it
+
+• Physical to cloud migration
+• Data center migration
+• Legacy system migration
+
+---
+
+# 4. Veeam
+
+## What it does
+
+Veeam is primarily a backup and disaster recovery solution, but it is also used for cloud migration by restoring backups into cloud environments.
+
+## How it connects
+
+Veeam connects using:
+
+• Backup agents
+• Virtualization APIs
+• Cloud storage connectors
+
+It stores backups in cloud storage and restores them into cloud virtual machines.
+
+## How it is used
+
+Typical workflow:
+
+1. Take full backup of on‑prem server
+2. Store backup in cloud storage
+3. Restore backup into cloud VM
+4. Start application in cloud
+
+## When companies use it
+
+• Backup and recovery
+• Hybrid cloud backup
+• Migration through backup restore
+
+---
+
+# 5. Rsync
+
+## What it does
+
+Rsync is an open‑source file synchronization tool used to transfer and synchronize files between servers efficiently.
+
+## How it connects
+
+Rsync connects using SSH between the on‑premises server and the cloud server.
+
+## How it is used
+
+Typical workflow:
+
+1. Establish SSH connection
+2. Run rsync command
+3. Transfer files incrementally
+4. Synchronize only changed files
+
+## Example command
+
+rsync -avz /localdata user@cloudserver:/data
+
+## When companies use it
+
+• File migration
+• Backup synchronization
+• DevOps automation scripts
+
+---
+
+# Tool Comparison Summary
+
+| Tool        | Main Purpose                         |
+| ----------- | ------------------------------------ |
+| CloudEndure | Full server migration                |
+| Zerto       | Disaster recovery and VM replication |
+| Carbonite   | Server migration                     |
+| Veeam       | Backup and recovery migration        |
+| Rsync       | File synchronization                 |
+
+---
+
+# Simple Interview Summary
+
+Third‑party tools like CloudEndure, Zerto, Carbonite, Veeam, and Rsync help migrate servers, replicate data, perform backups, and synchronize files when moving applications from on‑premises to cloud environments.
+
+---
+
+# Key Takeaway
+
+In Lift‑and‑Shift migration, third‑party tools help organizations:
+
+• Reduce downtime
+• Automate migration
+• Maintain data consistency
+• Improve disaster recovery
+• Simplify hybrid cloud operations
+
+---
+
+# One Line Conclusion
+
+Third‑party migration tools help move servers, data, and applications from on‑premises to cloud efficiently while minimizing downtime and operational risks.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Active-Passive Multi-Cloud Architecture (5 simple lines):
+
+1.In this architecture, the application runs actively in one cloud (primary like AWS) while another cloud (secondary like Azure) stays as standby.
+
+2.Data is continuously replicated from the active cloud to the passive cloud to keep both synchronized.
+
+3.Monitoring tools check the health of the primary cloud continuously.
+
+4.If the primary cloud fails, traffic automatically shifts to the secondary cloud (failover).
+
+5.This improves reliability, disaster recovery, and ensures high availability with minimal downtime.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Infrastructure Migration
+
+Instead of manually creating everything, companies use Infrastructure as Code (IaC).
+
+Infrastructure as Code (IaC) means you write a small configuration file that describes what infrastructure you want, and the tool creates it automatically instead of manually clicking in the cloud portal.
+
+Example:
+Instead of manually creating:
+
+1 VM
+1 Network
+1 Load balancer
+
+You write a Terraform file saying:
+"Create 1 Azure VM with 4GB RAM inside a VNet with a load balancer" → Terraform creates everything automatically.

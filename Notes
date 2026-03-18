@@ -289,3 +289,7 @@ Companies usually follow 3-2-1 rule:
 1 offsite backup
 Simple idea:
 Never depend on just one backup cloud — always keep multiple recovery options to avoid total failure.
+----------------------------------------------------------------------------------------------
+
+
+Terraform ---> A script is written so that it creates the VMs, Load balancer according to the specifications given in the script. Along with it the credentials have to be given.

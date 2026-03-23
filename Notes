@@ -293,3 +293,125 @@ Never depend on just one backup cloud — always keep multiple recovery options 
 
 
 Terraform ---> A script is written so that it creates the VMs, Load balancer according to the specifications given in the script. Along with it the credentials have to be given.
+
+-----------------------------------------------------------------------------------------------
+
+Main Infrastructure Migration Methods 🖥️
+
+These are specifically for infrastructure layer migration:
+
+1. VM Replication Method
+
+Method:
+Entire server copied to cloud.
+
+Process:
+Server → Replication agent → Cloud VM
+
+Tools:
+
+AWS MGN
+Azure Site Recovery
+Google Migrate
+
+Used for:
+Infrastructure lift and shift.
+
+2. Image-Based Migration
+
+Method:
+Create server image and deploy in cloud.
+
+Process:
+Create image → Upload → Launch VM
+
+Example:
+VMware image → AWS AMI
+
+Used for:
+Standard infrastructure deployment.
+
+3. Containerization Method 📦
+
+Method:
+Convert infrastructure into containers.
+
+Process:
+Application → Docker → Kubernetes
+
+Benefits:
+
+Portable
+Fast scaling
+Lightweight
+
+Example:
+VM based app → Docker container
+
+4. Infrastructure as Code (IaC) Method 📜
+
+Method:
+Infrastructure recreated using scripts.
+
+Tools:
+
+Terraform
+AWS CloudFormation
+Azure ARM
+Pulumi
+
+Example Terraform:
+
+resource "aws_instance" "web" {
+  ami = "ami-12345"
+  instance_type = "t2.micro"
+}
+
+Benefits:
+
+Repeatable infrastructure
+Automated deployment
+Version control
+
+(This is very important in modern infrastructure migration.)
+
+5. Hybrid Migration Method 🌐
+
+Method:
+Part infra on-prem + part cloud.
+
+Example:
+Database on-prem
+App server in cloud
+
+Used when:
+
+Compliance requirements
+Gradual migration needed
+6. Blue-Green Migration Method 🔵🟢
+
+Method:
+Run old and new infrastructure parallel.
+
+Process:
+Old infra (Blue)
+New infra (Green)
+
+Switch traffic when ready.
+
+Used for:
+Zero downtime migration.
+
+7. Canary Migration 🐤
+
+Method:
+Move small traffic first.
+
+Example:
+10% users → new infra
+If stable → 100%
+
+Used for:
+Risk reduction.
+
+

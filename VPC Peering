@@ -1,0 +1,43 @@
+VPC Peering Connection 🌐
+
+A VPC peering connection is a networking connection between two VPCs that enables you to route traffic between them using private IPv4 addresses or IPv6 addresses.
+Instances in either VPC can communicate with each other as if they are within the same network.
+Two VPCs with different CIDR range. The services or attributes requied:
+
+Subnets
+EC2 Instances
+Security Groups
+Key Pairs
+Route Tables
+Peering Connection
+-------------------------------------
+How it works 
+
+VPC-1 (10.0.0.0/16) ⇄ Peering Connection ⇄ VPC-2 (192.168.0.0/16)
+
+Steps:
+1 Create VPC peering request
+2 Accept request
+3 Update route tables
+4 Configure security groups
+5 Start communication
+----------------------------------------------------------------
+
+Step 1: Create a VPC . Give it a name , IPv4 CIDR as 192.168.0.0/24
+Step 2: Create a Subnet, Give it a name ,for VPC select the created VPC, preffered Availability Zone and IPv4 CIDR as 192.168.1.0/24.
+Step 3: Create an Internet Gateway. Now click actions ---> Attach to VPC ---> In select VPC click the created VPC ---> Click Attach.
+Step 4: Click a route table and attach the Created VPC with it. Select Edit routes, select the destination as 0.0.0.0/0 and Target --> Internet gateway
+        --> Select the VPC created .
+        Click edit subnet Associates --> Click Edit subnet Associations ---> Selected the created Subnet and save.
+Step 5: Create a EC2. Give a name --> Amazon Linux (Others Default) --> Instance type(t3.micro).
+        Network Settings --> Select the VPC created, The subnet will be automatically assigned, Auto assingn Public(enable).
+        Security Group --> Create one --> Type = All traffic , Source = anywhere.
+        Leave the others as default and click create.
+Step 6: Create a 2nd instance with above details. 
+        Choose default in network settings.
+        Craete a new security Group and others as same as above.
+Step 7: Create a peer connection in vpc. Select the requester and accepter within any of the 2 vpc.
+Step 8: In VPC select default vpc , select go to routes--> edit routes--> Add routes --> Add the IP range of the other vpc via Peer connection --> Save Changes.
+        Do the same for the created VPC, give the ip range of default vpc. Save.
+Step 9: Open the EC2(any one connected to VPC). Go to cmd of the server run--> ping <pub ip of the other ec2>.
+        Then run --> ping (pvt ip of the other ec2>.

@@ -376,10 +376,8 @@ Version control
 (This is very important in modern infrastructure migration.)
 
 5. Hybrid Migration Method 🌐
-
 Method:
 Part infra on-prem + part cloud.
-
 Example:
 Database on-prem
 App server in cloud
@@ -388,25 +386,20 @@ Used when:
 
 Compliance requirements
 Gradual migration needed
-6. Blue-Green Migration Method 🔵🟢
 
+6. Blue-Green Migration Method 🔵🟢
 Method:
 Run old and new infrastructure parallel.
-
 Process:
 Old infra (Blue)
 New infra (Green)
-
 Switch traffic when ready.
-
 Used for:
 Zero downtime migration.
 
 7. Canary Migration 🐤
-
 Method:
 Move small traffic first.
-
 Example:
 10% users → new infra
 If stable → 100%

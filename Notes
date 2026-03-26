@@ -12,11 +12,13 @@ This document summarizes some important third‑party migration tools, what they
 
 ## What it does
 
-CloudEndure is a migration and disaster recovery tool that replicates entire servers including operating system, applications, configurations, and data from on‑premises infrastructure to the cloud with minimal downtime.
+CloudEndure is a migration and disaster recovery tool that replicates entire servers including operating system, applications, configurations,
+and data from on‑premises infrastructure to the cloud with minimal downtime.
 
 ## How it connects
 
-CloudEndure works by installing a lightweight replication agent on the source (on‑premises) server. This agent continuously replicates disk data to a staging environment in the cloud through secure HTTPS communication.
+CloudEndure works by installing a lightweight replication agent on the source (on‑premises) server. This agent continuously replicates disk data to a 
+staging environment in the cloud through secure HTTPS communication.
 
 ## How it is used
 
@@ -175,7 +177,8 @@ rsync -avz /localdata user@cloudserver:/data
 
 # Simple Interview Summary
 
-Third‑party tools like CloudEndure, Zerto, Carbonite, Veeam, and Rsync help migrate servers, replicate data, perform backups, and synchronize files when moving applications from on‑premises to cloud environments.
+Third‑party tools like CloudEndure, Zerto, Carbonite, Veeam, and Rsync help migrate servers, replicate data, perform backups, and synchronize files 
+when moving applications from on‑premises to cloud environments.
 
 ---
 

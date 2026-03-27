@@ -2,7 +2,8 @@
 
 ## Introduction
 
-When migrating an application from on‑premises to the cloud using the Lift‑and‑Shift approach, organizations may use either native cloud tools (like AWS MGN, DMS) or third‑party tools. Third‑party tools are commonly used because they support multiple cloud providers, provide advanced disaster recovery features, and simplify migration with automation.
+When migrating an application from on‑premises to the cloud using the Lift‑and‑Shift approach, organizations may use either native cloud tools 
+(like AWS MGN, DMS) or third‑party tools. Third‑party tools are commonly used because they support multiple cloud providers, provide advanced disaster recovery features, and simplify migration with automation.
 
 This document summarizes some important third‑party migration tools, what they do, how they connect, and how they are used in real migration scenarios.
 

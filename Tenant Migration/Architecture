@@ -1,0 +1,14 @@
+User Request
+      ↓
+Route 53 (DNS + Health Check)
+      ↓              ↓
+  PRIMARY          SECONDARY
+ us-east-1         ap-south-1
+ (N. Virginia)     (Mumbai)
+      ↓                ↓
+   EC2 + App       EC2 + App
+      ↓                ↓
+      └──── Both monitored by Prometheus + Grafana ────┘
+                        ↓
+              Auto Failover triggered
+              when primary goes down

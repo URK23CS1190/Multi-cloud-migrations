@@ -12,3 +12,16 @@ Route 53 (DNS + Health Check)
                         ↓
               Auto Failover triggered
               when primary goes down
+
+
+------------------------------------------------------------------------------------------------------
+
+Phase 2 — AWS Infrastructure with Terraform (Day 3-4)
+Create these in both regions using Terraform:
+Each Region Needs:
+├── VPC
+├── Public Subnet
+├── Internet Gateway
+├── Security Group (port 80, 443, 22)
+└── EC2 t2.micro (Free Tier)
+---------------------------------------------------------------------------------------------

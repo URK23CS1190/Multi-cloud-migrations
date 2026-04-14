@@ -25,3 +25,39 @@ Each Region Needs:
 ├── Security Group (port 80, 443, 22)
 └── EC2 t2.micro (Free Tier)
 ---------------------------------------------------------------------------------------------
+
+
+Launch PRIMARY EC2 (us-east-1)
+Settings:
+Region: us-east-1 (N. Virginia)
+Name: primary-server
+AMI: Ubuntu 22.04
+Instance type: t2.micro
+Key pair: Create new (aegis-key.pem)
+Network: Default VPC
+Storage: 8GB (default)
+🔐 Security Group (VERY IMPORTANT)
+
+Allow:
+
+Type	Port
+SSH	22
+HTTP	80
+Custom	3000
+
+
+Launch SECONDARY EC2 (ap-south-1)
+
+Switch region → Mumbai
+
+Repeat same steps:
+
+Name: secondary-server
+Same config (t2.micro, Ubuntu)
+--------------------------------------------------
+
+cd Downloads
+chmod 400 aegis-key.pem
+ssh -i aegis-key.pem ubuntu@your-ip
+icacls aegis-key.pem /inheritance:r
+ssh -i aegis-key.pem ubuntu@<your-ec2-public-ip>

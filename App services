@@ -1,0 +1,38 @@
+AWS Elastic Beanstalk:
+An orchestration service for deploying web applications and services. It supports multiple languages (Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker) 
+and handles capacity provisioning, load balancing, and auto-scaling. 
+
+AWS App Runner: 
+A fully managed container service that connects directly to your source code or container image to deploy scalable web apps and APIs. 
+Note: AWS will stop accepting new customers for App Runner on April 30, 2026; users are encouraged to migrate to Amazon ECS Express Mode. 
+
+AWS Amplify:
+A purpose-built platform for frontend web and mobile developers to build and host full-stack applications with built-in authentication, storage, 
+and CI/CD workflows. 
+
+----------------------------------------------------------------------------------------------------
+
+Serverless & Container Services
+AWS Lambda: 
+A serverless compute service that runs code in response to events (FaaS). It automatically scales and bills only for the actual compute time used. 
+
+Amazon Elastic Container Service (ECS): 
+A highly scalable container management service that allows you to run, stop, and manage Docker containers on a cluster. 
+
+AWS Fargate:
+A serverless compute engine for containers that works with both ECS and Amazon EKS, removing the need to manage underlying servers. 
+
+------------------------------------------------------------------------------------------------------
+
+Supporting Application Services
+Amazon API Gateway: 
+A fully managed service for creating, publishing, and securing REST, HTTP, and WebSocket APIs at any scale.
+
+Amazon Simple Notification Service (SNS): 
+A managed pub/sub messaging service for system-to-system and app-to-person notifications.
+
+AWS App Studio: 
+A generative AI-powered service that uses natural language to build secure, enterprise-grade business applications in minutes.
+
+Amazon Lightsail: 
+Provides easy-to-use virtual private servers (VPS), storage, and networking for simple web applications and websites.

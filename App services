@@ -36,3 +36,9 @@ A generative AI-powered service that uses natural language to build secure, ente
 
 Amazon Lightsail: 
 Provides easy-to-use virtual private servers (VPS), storage, and networking for simple web applications and websites.
+
+Amazon Elastic Container Registry (ECR):
+Amazon Elastic Container Registry (ECR) is a fully managed, secure, and scalable AWS container image registry service. 
+It allows developers to easily store, manage, and deploy Docker and Open Container Initiative (OCI) images.
+ECR eliminates infrastructure management, offering automated scaling, high availability, and tight integration with AWS IAM for security
+and services like ECS, EKS, and Lambda.
